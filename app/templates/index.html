@@ -50,8 +50,8 @@
         <h2>Vota por tu Pintxo Favorito</h2>
         <p>¡Elige el mejor pintxo y participa en el sorteo!</p>
     
-        <form action="{{ url_for('procesar_voto') }}" method="post">
-
+        <form action="{{ url_for('main.procesar_voto_ruta') }}" method="post">
+            
             <label for="nombre_votante">Tu Nombre:</label>
             <input type="text" id="nombre_votante" name="nombre_votante" required placeholder="Escribe tu nombre completo">
     
