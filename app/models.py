@@ -1,4 +1,3 @@
-# app/models.py
 from . import db  # Importa la instancia 'db' de SQLAlchemy desde app/__init__.py
 import datetime   # Para el campo de fecha en el modelo Voto
 
@@ -38,7 +37,10 @@ class Voto(db.Model):
     votante_id = db.Column(db.Integer, db.ForeignKey('votantes.id'), nullable=False)
     bar_id = db.Column(db.Integer, db.ForeignKey('bares.id'), nullable=False)
     categoria_id = db.Column(db.Integer, db.ForeignKey('categorias_pintxos.id'), nullable=False)
-    fecha_voto = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+    fecha_voto = db.Column(db.DateTime, nullable=False, default=lambda: datetime.datetime.now(timezone.utc))
+
+    # Añadir esto para la restricción de unicidad
+    __table_args__ = (db.UniqueConstraint('votante_id', 'categoria_id', name='uq_votante_categoria_unica'),)
 
     def __repr__(self):
         return f'<Voto {self.id}>'

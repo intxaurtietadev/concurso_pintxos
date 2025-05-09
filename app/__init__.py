@@ -1,9 +1,7 @@
-# app/__init__.py
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-# Importa tu clase de configuración. Asumiendo que config.py está en el directorio raíz,
-# y que el directorio raíz está en el PYTHONPATH cuando ejecutas la app.
-from config import Config # Esto funciona si 'config.py' está en el mismo nivel que el script que ejecuta la app o en PYTHONPATH
+
+from config import Config 
 
 db = SQLAlchemy() # Inicializa la extensión, pero sin la app todavía
 
