@@ -27,6 +27,7 @@ secrets.yaml
 *.pem
 *.key
 env
+.venv
 
 # Logs
 *.log
