@@ -50,32 +50,43 @@
         <h2>Vota por tu Pintxo Favorito</h2>
         <p>¡Elige el mejor pintxo y participa en el sorteo!</p>
     
-        <form action="{{ url_for('main.procesar_voto_ruta') }}" method="post">
-            
-            <label for="nombre_votante">Tu Nombre:</label>
-            <input type="text" id="nombre_votante" name="nombre_votante" required placeholder="Escribe tu nombre completo">
+<form action="{{ url_for('main.procesar_voto_ruta') }}" method="post">
+    {{ form.hidden_tag() }} <div>
+        {{ form.nombre_votante.label }}<br>
+        {{ form.nombre_votante(id="nombre_votante", placeholder="Escribe tu nombre completo") }}<br>
+        {% for error in form.nombre_votante.errors %}
+            <span style="color: red;">[{{ error }}]</span><br>
+        {% endfor %}
+    </div>
+
+    <div>
+        {{ form.email_votante.label }}<br>
+        {{ form.email_votante(id="email_votante", placeholder="tu.email@ejemplo.com") }}<br>
+        {% for error in form.email_votante.errors %}
+            <span style="color: red;">[{{ error }}]</span><br>
+        {% endfor %}
+    </div>
+
+    <div>
+        {{ form.categoria_id.label }}<br>
+        {{ form.categoria_id(id="categoria_id") }}<br> 
+        {% for error in form.categoria_id.errors %}
+            <span style="color: red;">[{{ error }}]</span><br>
+        {% endfor %}
+    </div>
+
+    <div>
+        {{ form.bar_id.label }}<br>
+        {{ form.bar_id(id="bar_id") }}<br>
+        {% for error in form.bar_id.errors %}
+            <span style="color: red;">[{{ error }}]</span><br>
+        {% endfor %}
+    </div>
     
-            <label for="email_votante">Tu Email:</label>
-            <input type="email" id="email_votante" name="email_votante" required placeholder="tu.email@ejemplo.com">
-    
-            <label for="categoria_pintxo">Categoría del Pintxo:</label>
-            <select name="categoria_pintxo" id="categoria_pintxo" required>
-                <option value="" disabled selected>-- Elige una categoría --</option>
-                {% for categoria in categorias %}
-                    <option value="{{ categoria.id_cat }}">{{ categoria.nombre_visible }}</option>
-                {% endfor %}
-            </select>
-    
-             <label for="bar_votado">Selecciona el bar:</label>
-             <select name="bar_votado" id="bar_votado" required>
-                 <option value="" disabled selected>-- Elige un bar --</option>
-                 {% for bar in bares %}
-                     <option value="{{ bar.nombre }}">{{ bar.nombre }}</option>
-                 {% endfor %}
-             </select>
-    
-             <input type="submit" value="Enviar Voto">
-         </form>
+    <div>
+        {{ form.submit() }}
+    </div>
+</form>
          {% with messages = get_flashed_messages(with_categories=true) %}
          {% if messages %}
            <div class="flash-messages">
