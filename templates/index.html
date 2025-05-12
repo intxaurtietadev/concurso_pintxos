@@ -31,23 +31,29 @@
 
     <section id="bases" class="section">
         <h2>Bases del Concurso</h2>
-        <img src="{{ url_for('static', filename='images/cartel.png') }}" alt="Bases del Concurso" class="base-image">
-        <p>El Concurso de Pintxos del Casco Viejo de Bilbao está dirigido exclusivamente a los bares de la zona.
-        Si tienes un bar en estas emblemáticas calles y te apasiona la cocina en miniatura, este es tu momento para demostrar tu creatividad y sabor. 
-        <br><h4><b><i>¡Haz que tu barra brille! </i></b></h4>
-        </p>
-        <p><u>Fechas:</u>
-            <br>El concurso se celebrará del 5 al 25 de octubre de 2025. Los establecimientos participantes presentarán un único pintxo por categoria. Un jurado profesional y el público elegirán los mejores pintxos.</p>
-        <p><u>Condiciones del concurso:</u>
-            <br>
-            Cada bar podrá presentar un pintxo por categoría, elaborado expresamente para el concurso.
-        <br>Los pintxos deben servirse en formato individual, listos para consumir de un bocado o con utensilio. 
-        <br>Se valorará la presentación, el sabor, la creatividad y el uso de productos de calidad.</p>
-        <p><u>Premios:</u>
-            <br>Los ganadores de cada categoría recibirán un reconocimiento especial, además de un premio que destaca su talento y dedicación.
-            Además del trofeo acreditativo, su pintxo será promocionado en canales oficiales, obteniendo visibilidad en medios locales y redes sociales.
-        </p>
-        <button class="btn btn-primary" onclick="window.location.href='#votar'">¡Vota por tu Pintxo Favorito!</button> 
+        <div class="bases-container">
+            <div class="bases-image">
+                <img src="{{ url_for('static', filename='images/cartel.png') }}" alt="Bases del Concurso" class="base-image">
+            </div>
+            <div class="bases-info">
+                <p>El Concurso de Pintxos del Casco Viejo de Bilbao está dirigido exclusivamente a los bares de la zona.
+                Si tienes un bar en estas emblemáticas calles y te apasiona la cocina en miniatura, este es tu momento para demostrar tu creatividad y sabor. 
+                <br><h4><b><i>¡Haz que tu barra brille! </i></b></h4>
+                </p>
+                <p><u>Fechas:</u>
+                    <br>El concurso se celebrará del 5 al 25 de octubre de 2025. Los establecimientos participantes presentarán un único pintxo por categoria. Un jurado profesional y el público elegirán los mejores pintxos.</p>
+                <p><u>Condiciones del concurso:</u>
+                    <br>
+                    Cada bar podrá presentar un pintxo por categoría, elaborado expresamente para el concurso.
+                <br>Los pintxos deben servirse en formato individual, listos para consumir de un bocado o con utensilio. 
+                <br>Se valorará la presentación, el sabor, la creatividad y el uso de productos de calidad.</p>
+                <p><u>Premios:</u>
+                    <br>Los ganadores de cada categoría recibirán un reconocimiento especial, además de un premio que destaca su talento y dedicación.
+                    Además del trofeo acreditativo, su pintxo será promocionado en canales oficiales, obteniendo visibilidad en medios locales y redes sociales.
+                </p>
+                <button class="btn btn-primary" onclick="window.location.href='#votar'">¡Vota por tu Pintxo Favorito!</button>
+            </div>
+        </div>
     </section>
 
     <section id="bares" class="section">
@@ -109,7 +115,7 @@
         <p>Recuerda que solo puedes votar una vez por categoría.</p>
     </section>
 
-    <section id="premios" class="section">
+     <section id="premios" class="section">
         <h2>Premios del Concurso</h2>
         <div class="premios-grid">
             {% if premios %}

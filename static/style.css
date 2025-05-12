@@ -131,13 +131,32 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
+/* Estilo para los encabezados de sección con línea decorativa */
 .section h2 {
     font-family: var(--font-primary);
     font-size: 2.8em;
     color: var(--color-red);
-    margin-bottom: 1.875rem;
+    margin-bottom: 2.5rem; /* Espacio aumentado debajo del título */
     text-align: center;
     text-transform: uppercase;
+    position: relative;
+    padding-bottom: 1rem; /* Espacio para la línea */
+}
+
+.section h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px; /* Línea más ancha */
+    height: 4px; /* Línea más gruesa */
+    background-color: var(--color-red);
+}
+
+/* Ajuste para mantener el espacio adecuado después del encabezado */
+.section h2 + * {
+    margin-top: 2rem;
 }
 
 .section p, .section li {
@@ -311,6 +330,72 @@ body {
 .premios-image {
     width: 100%;
     height: auto;
+}
+
+/* Sección Bases del Concurso - Updated */
+.section#bases .bases-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.section#bases .bases-image {
+    flex: 1.2; /* Aumentado para dar más espacio a la imagen */
+    min-width: 350px; /* Ancho mínimo aumentado */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.section#bases .bases-info {
+    flex: 1.8; /* Ajustado para mantener la proporción */
+    min-width: 300px;
+}
+
+.section#bases .base-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    object-fit: cover;
+    max-height: 650px; /* Altura máxima aumentada */
+    display: block;
+    margin: 0 auto; /* Centrar la imagen */
+}
+
+/* Responsive adjustments for Bases section */
+@media (max-width: 768px) {
+    .section#bases .bases-container {
+        flex-direction: column;
+    }
+    
+    .section#bases .bases-image, 
+    .section#bases .bases-info {
+        width: 100%;
+    }
+}
+
+/* Style for the button in bases section */
+.section#bases .btn-primary {
+    display: inline-block;
+    padding: 0.625rem 1.25rem;
+    background-color: var(--color-red);
+    color: var(--color-white);
+    text-decoration: none;
+    border-radius: 0.3125rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.section#bases .btn-primary:hover {
+    background-color: #8a2812;
 }
 
 /* Footer */
