@@ -110,17 +110,23 @@
     </section>
 
     <section id="premios" class="section">
-        <h2>Premios</h2>
-        <p>Se otorgarán premios a diferentes categorías de pintxos.</p>
-        <ul>
-            <li>Mejor Pintxo Creativo</li>
-            <li>Mejor Pintxo Tradicional</li>
-            <li>Premio del Público</li>
-        </ul>
-    </section>
+        <h2>Premios del Concurso</h2>
+        <div class="premios-grid">
+            {% if premios %}
+                {% for premio in premios %}
+                    <div class="premio-card">
+                        <h3>{{ premio.nombre }}</h3>
+                        <img src="{{ url_for('static', filename=pintxo.get('images/default.jpg')) }}" alt="{{ premio.nombre }}" class="pintxo-image">
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No hay foto de pintxo en esta categoría.</p>
+            {% endif %}
+        </div>
+    </section> 
 
     <footer>
         <p>&copy; 2025 Concurso de Pintxos Bilbao</p>
     </footer>
-</body>
+</body> 
 </html>

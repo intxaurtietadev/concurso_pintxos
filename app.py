@@ -36,7 +36,16 @@ logos_bares = {
     "La Olla": "images/bares/laolla.png",
     "Bar Fermín": "images/bares/Bar_fermin_logo.png",
     "Bar Urdiña": "images/bares/urdiña.png",
-    "Zaharra - Plaza Nueva": "images/bares/zaharra.jpg"
+    "Zaharra - Plaza Nueva": "images/bares/zaharra.jpg",
+}
+
+pintxo_premios = {
+    "id": "pintxo1", "nombre_pintxo": "Mejor Pintxo Creativo/Innovador", "pintxo-image": "images/pintxos/creativo.jpg",
+    "id": "pintxo2", "nombre_pintxo": "Mejor Pintxo de Tortilla", "pintxo-image": "images/pintxos/tortilla.jpg",
+    "id": "pintxo3", "nombre_pintxo": "Mejor Pintxo de Bacalao", "pintxo-image": "images/pintxos/bacalao.jpeg",
+    "id": "pintxo4", "nombre_pintxo": "Mejor Pintxo de Gilda", "pintxo-image": "images/pintxos/gilda.jpeg",
+    "id": "pintxo5", "nombre_pintxo": "Mejor Pintxo Vegano", "pintxo-image": "images/pintxos/vegano.jpg",
+    "id": "pintxo6", "nombre_pintxo": "Mejor Pintxo de Rabas", "pintxo-image": "images/pintxos/rabas.webp",
 }
 
 # Lista en memoria para guardar los votos (se reinicia cada vez que reinicias el servidor)
