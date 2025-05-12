@@ -9,11 +9,13 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/' # Reemplaza esto con tu propia clave se
 bares_participantes = [
     {"id": 1, "nombre": "Bar Charly", "direccion": "Plaza Nueva, 8"},
     {"id": 2, "nombre": "Restaurante Víctor Montes", "direccion": "Plaza Nueva, 8"},
-    {"id": 3, "nombre": "Txiriboga", "direccion": "C/ Andra Maria, 13"},
+    {"id": 3, "nombre": "Txiriboga", "direccion": "Andra Maria, 13"},
     {"id": 4, "nombre": "Gure Toki", "direccion": "Plaza Nueva, 12"},
     {"id": 5, "nombre": "Sorginzulo", "direccion": "Plaza Nueva, 12"},
     {"id": 6, "nombre": "La Olla", "direccion": "Plaza Nueva, 2"},
     {"id": 7, "nombre": "Bar Fermín", "direccion": "Iturribide, 4"},
+    {"id": 8, "nombre": "Bar Urdiña", "direccion": "Plaza Nueva, 5"},
+    {"id": 9, "nombre": "Zaharra - Plaza Nueva", "direccion": "Barria, 4"},
 ]
 
 categorias_pintxos = [
@@ -21,8 +23,21 @@ categorias_pintxos = [
     {"id_cat": "rabas", "nombre_visible": "Rabas"},
     {"id_cat": "bacalao", "nombre_visible": "Bacalao"},
     {"id_cat": "gilda", "nombre_visible": "Gilda"},
+    {"id_cat": "vegano", "nombre_visible": "Vegano"},
     {"id_cat": "creativo", "nombre_visible": "Creativo / Innovador"},
 ]
+
+logos_bares = {
+    "Bar Charly": "images/bares/charly.jpeg",
+    "Restaurante Víctor Montes": "images/bares/victor.png",
+    "Txiriboga": "images/bares/txiriboga.png",
+    "Gure Toki": "images/bares/Gure-Toki-logo.jpg",
+    "Sorginzulo": "images/bares/sorginzulo.jpg",
+    "La Olla": "images/bares/laolla.png",
+    "Bar Fermín": "images/bares/Bar_fermin_logo.png",
+    "Bar Urdiña": "images/bares/urdiña.png",
+    "Zaharra - Plaza Nueva": "images/bares/zaharra.jpg"
+}
 
 # Lista en memoria para guardar los votos (se reinicia cada vez que reinicias el servidor)
 votos_registrados = []
@@ -34,7 +49,8 @@ def index():
     # Podrías pasar 'votos_registrados' también si quieres mostrarlos en index.html
     return render_template('index.html',
                         bares=bares_participantes,
-                        categorias=categorias_pintxos)
+                        categorias=categorias_pintxos,
+                        logos=logos_bares,)
                         # votos=votos_registrados) # Descomenta si quieres mostrar votos
 
 @app.route('/votar', methods=['POST'])

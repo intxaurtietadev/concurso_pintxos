@@ -191,6 +191,11 @@ body {
     margin-bottom: 0;
 }
 
+.bar-image {
+    width: 100%;
+    height: auto;
+}
+
 /* Estilos para mensajes flash */
 .flash-messages {
     padding: 0 1.25rem;

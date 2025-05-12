@@ -26,6 +26,7 @@ config.cfg
 secrets.yaml
 *.pem
 *.key
+env
 
 # Logs
 *.log
