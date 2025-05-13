@@ -386,6 +386,106 @@ body {
     height: auto;
 }
 
+/* Sección Bases del Concurso - Updated */
+.section#bases .bases-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.section#bases .bases-image {
+    flex: 1.2; /* Aumentado para dar más espacio a la imagen */
+    min-width: 350px; /* Ancho mínimo aumentado */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.section#bases .bases-info {
+    flex: 1.8; /* Ajustado para mantener la proporción */
+    min-width: 300px;
+}
+
+.section#bases .base-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    object-fit: cover;
+    max-height: 650px; /* Altura máxima aumentada */
+    display: block;
+    margin: 0 auto; /* Centrar la imagen */
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
+  }
+  
+  /* Imagen dentro del modal */
+  .modal-content {
+    display: block;
+    margin: 5% auto;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  }
+  
+  /* Botón de cerrar (la X) */
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+/* Responsive adjustments for Bases section */
+@media (max-width: 768px) {
+    .section#bases .bases-container {
+        flex-direction: column;
+    }
+    
+    .section#bases .bases-image, 
+    .section#bases .bases-info {
+        width: 100%;
+    }
+}
+
+/* Style for the button in bases section */
+.section#bases .btn-primary {
+    display: inline-block;
+    padding: 0.625rem 1.25rem;
+    background-color: var(--color-red);
+    color: var(--color-white);
+    text-decoration: none;
+    border-radius: 0.3125rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.section#bases .btn-primary:hover {
+    background-color: #8a2812;
+}
 
 /* Footer */
 footer {

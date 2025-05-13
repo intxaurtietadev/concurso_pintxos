@@ -48,6 +48,17 @@ pintxo_premios = [
     {"id": "pintxo6", "nombre_pintxo": "Mejor Pintxo de Rabas", "pintxo_image": "images/pintxos/rabas.webp"},
 ]
 
+imagenes_popup = {
+    "Bar Charly": "images/collage/full/1.png",
+    "Restaurante Víctor Montes": "images/collage/2.png",
+    "Txiriboga": "images/collage/3.png",
+    "Gure Toki": "images/collage/4.png",
+    "Sorginzulo": "images/collage/5.png",
+    "La Olla": "images/collage/6.png",
+    "Bar Fermín": "images/collage/7.png",
+    "Bar Urdiña": "images/collage/8.png",
+    "Zaharra - Plaza Nueva": "images/collage/9.png",
+}
 
 # Lista en memoria para guardar los votos (se reinicia cada vez que reinicias el servidor)
 votos_registrados = []
@@ -60,6 +71,7 @@ def index():
                         bares=bares_participantes,
                         categorias=categorias_pintxos,
                         logos=logos_bares,
+                        imagenes_popup=imagenes_popup,
                         premios=pintxo_premios)
                         # votos=votos_registrados) # Descomenta si quieres mostrar votos
 
