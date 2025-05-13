@@ -39,14 +39,15 @@ logos_bares = {
     "Zaharra - Plaza Nueva": "images/bares/zaharra.jpg",
 }
 
-pintxo_premios = {
-    "id": "pintxo1", "nombre_pintxo": "Mejor Pintxo Creativo/Innovador", "pintxo-image": "images/pintxos/creativo.jpg",
-    "id": "pintxo2", "nombre_pintxo": "Mejor Pintxo de Tortilla", "pintxo-image": "images/pintxos/tortilla.jpg",
-    "id": "pintxo3", "nombre_pintxo": "Mejor Pintxo de Bacalao", "pintxo-image": "images/pintxos/bacalao.jpeg",
-    "id": "pintxo4", "nombre_pintxo": "Mejor Pintxo de Gilda", "pintxo-image": "images/pintxos/gilda.jpeg",
-    "id": "pintxo5", "nombre_pintxo": "Mejor Pintxo Vegano", "pintxo-image": "images/pintxos/vegano.jpg",
-    "id": "pintxo6", "nombre_pintxo": "Mejor Pintxo de Rabas", "pintxo-image": "images/pintxos/rabas.webp",
-}
+pintxo_premios = [
+    {"id": "pintxo1", "nombre_pintxo": "Mejor Pintxo Creativo/Innovador", "pintxo_image": "images/pintxos/creativo.jpg"},
+    {"id": "pintxo2", "nombre_pintxo": "Mejor Pintxo de Tortilla", "pintxo_image": "images/pintxos/tortilla.jpg"},
+    {"id": "pintxo3", "nombre_pintxo": "Mejor Pintxo de Bacalao", "pintxo_image": "images/pintxos/bakalao.jpeg"},
+    {"id": "pintxo4", "nombre_pintxo": "Mejor Pintxo de Gilda", "pintxo_image": "images/pintxos/gilda.jpeg"},
+    {"id": "pintxo5", "nombre_pintxo": "Mejor Pintxo Vegano", "pintxo_image": "images/pintxos/vegano.jpg"},
+    {"id": "pintxo6", "nombre_pintxo": "Mejor Pintxo de Rabas", "pintxo_image": "images/pintxos/rabas.webp"},
+]
+
 
 # Lista en memoria para guardar los votos (se reinicia cada vez que reinicias el servidor)
 votos_registrados = []
@@ -59,7 +60,7 @@ def index():
                         bares=bares_participantes,
                         categorias=categorias_pintxos,
                         logos=logos_bares,
-                        pintxo_premios=pintxo_premios)
+                        premios=pintxo_premios)
                         # votos=votos_registrados) # Descomenta si quieres mostrar votos
 
 @app.route('/votar', methods=['POST'])
