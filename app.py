@@ -55,8 +55,7 @@ votos_registrados = []
 
 @app.route('/')
 def index():
-    # Pasamos las listas a la plantilla como antes
-    # Podrías pasar 'votos_registrados' también si quieres mostrarlos en index.html
+    # Pasamos las listas a la plantilla incluyendo los premios
     return render_template('index.html',
                         bares=bares_participantes,
                         categorias=categorias_pintxos,
