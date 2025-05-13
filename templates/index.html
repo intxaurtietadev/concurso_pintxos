@@ -115,15 +115,15 @@
             {% if premios %}
                 {% for premio in premios %}
                     <div class="premio-card">
-                        <h3>{{ premio.nombre }}</h3>
-                        <img src="{{ url_for('static', filename=pintxo.get('images/default.jpg')) }}" alt="{{ premio.nombre }}" class="pintxo-image">
+                        <h3>{{ premio.nombre_pintxo }}</h3>
+                        <img src="{{ url_for('static', filename=premio.pintxo_image) }}" alt="{{ premio.nombre_pintxo }}" class="pintxo-image">
                     </div>
                 {% endfor %}
             {% else %}
-                <p>No hay foto de pintxo en esta categoría.</p>
+                <p>No hay premios disponibles en esta categoría.</p>
             {% endif %}
         </div>
-    </section> 
+    </section>
 
     <footer>
         <p>&copy; 2025 Concurso de Pintxos Bilbao</p>
