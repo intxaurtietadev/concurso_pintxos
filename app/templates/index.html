@@ -62,11 +62,11 @@
             {% if bares %}
                 {% for bar in bares %}
                     <div class="bar-card">
-                        <h3>{{ bar.nombre }}</h3>
-                        <img src="{{ url_for('static', filename=logos.get(bar.nombre, 'images/default.jpg')) }}" 
-                        alt="{{ bar.nombre }}" 
+                        <h3>{{ bar.nombre_bar }}</h3>
+                        <img src="{{ url_for('static', filename=logos.get(bar.nombre_bar, 'images/default.jpg')) }}" 
+                        alt="{{ bar.nombre_bar }}" 
                         class="bar-image"
-                        data-full="{{ url_for('static', filename=imagenes_popup.get(bar.nombre, 'images/collage/default.jpg')) }}">
+                        data-full="{{ url_for('static', filename=imagenes_popup.get(bar.nombre_bar, 'images/collage/default.jpg')) }}">
                         <p>{{ bar.direccion }}</p>
                     </div>
                 {% endfor %}
