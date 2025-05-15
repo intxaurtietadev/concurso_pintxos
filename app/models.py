@@ -1,6 +1,7 @@
 from . import db  # Importa la instancia 'db' de SQLAlchemy desde app/__init__.py
 import datetime   # Para el campo de fecha en el modelo Voto
 from datetime import timezone # Para la fecha UTC correcta
+from sqlalchemy.sql import func 
 
 class Rol(db.Model):
     __tablename__ = 'roles'
@@ -60,18 +61,24 @@ class Pintxo(db.Model):
 
 class Voto(db.Model):
     __tablename__ = 'votos'
-    id_voto = db.Column(db.Integer, primary_key=True) # El dump no especifica autoincrement explícitamente pero InnoDB lo hace para PK int
+    id_voto = db.Column(db.Integer, primary_key=True, autoincrement=True)
     id_usuario = db.Column(db.Integer, db.ForeignKey('usuarios.id_usuario'), nullable=False)
     id_pintxo = db.Column(db.Integer, db.ForeignKey('pintxos.id_pintxo'), nullable=False)
-    # El dump usa DEFAULT current_timestamp(). SQLAlchemy puede manejar esto o podemos seguir con nuestro default.
-    # Para consistencia con el dump y si current_timestamp() es deseado a nivel de DB:
-    # fecha_voto = db.Column(db.DateTime, nullable=False, server_default=db.func.current_timestamp())
-    # O si prefieres el control desde la app en UTC:
-    fecha_voto = db.Column(db.DateTime, nullable=False, default=lambda: datetime.datetime.now(timezone.utc))
+    # El dump usa DEFAULT current_timestamp(). SQLAlchemy puede manejar esto.
+    fecha_voto = db.Column(db.DateTime, nullable=False, server_default=func.now()) # o db.func.current_timestamp()
 
-    # Restricción de unicidad del DUMP: UNIQUE KEY `id_usuario` (`id_usuario`,`id_pintxo`)
-    # Esto significa que un usuario puede votar solo una vez por un pintxo específico.
-    __table_args__ = (db.UniqueConstraint('id_usuario', 'id_pintxo', name='uq_usuario_pintxo_unico'),)
+    # --- NUEVO CAMPO ---
+    id_categoria = db.Column(db.Integer, db.ForeignKey('categorias.id_categoria'), nullable=False)
+
+    # --- RESTRICCIÓN DE UNICIDAD MODIFICADA ---
+    # Un usuario puede votar solo una vez POR CATEGORÍA.
+    # El nombre 'unique_voto_por_categoria' es más descriptivo.
+    # La definición SQL tiene dos UNIQUE KEY que parecen ser para (id_usuario, id_categoria),
+    # 'id_usuario' y 'unique_voto_por_categoria'. En SQLAlchemy definimos una con el nombre más claro.
+    __table_args__ = (
+        db.UniqueConstraint('id_usuario', 'id_categoria', name='uq_usuario_categoria_unica'),
+    )
 
     def __repr__(self):
-        return f'<Voto {self.id_voto} - Usuario: {self.id_usuario} Pintxo: {self.id_pintxo}>'
+        return f'<Voto {self.id_voto} - Usuario: {self.id_usuario} Pintxo: {self.id_pintxo} Categoria: {self.id_categoria}>'
+
