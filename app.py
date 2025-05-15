@@ -11,5 +11,4 @@ def make_shell_context():
             'Usuario': Usuario, 'Voto': Voto, 'Rol': Rol}
 
 if __name__ == '__main__':
-    # Si ejecutas con 'python app.py', asegúrate de que debug sea True para desarrollo
-    flask_app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
