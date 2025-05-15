@@ -409,21 +409,6 @@ body {
     font-size: 0.9em;
     font-style: italic;
 }
-
-/* Make premios responsive */
-@media (max-width: 768px) {
-    .premios-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    .premios-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
 /* Footer */
 footer {
     background-color: var(--color-black);
@@ -438,7 +423,6 @@ footer p {
     font-size: 0.9em;
 }
 
-/* --- Responsive Design --- */
 
 /* Para tablets y pantallas medianas */
 @media (max-width: 768px) { 
@@ -471,6 +455,9 @@ footer p {
     .section#bases .bases-info {
         width: 100%;
     }
+     .premios-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* Para móviles */
@@ -499,6 +486,9 @@ footer p {
         font-size: 2em;
     }
     .bar-grid {
+        grid-template-columns: 1fr;
+    }
+    .premios-grid {
         grid-template-columns: 1fr;
     }
 } 
