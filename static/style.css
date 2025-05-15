@@ -1,4 +1,4 @@
-:root {
+ :root {
     --color-light-grey: #EAEAEA;
     --color-image-bg: #D8D8D8;
     --color-black: #212121;
@@ -74,13 +74,14 @@ body {
     overflow: hidden;
     background-image: url('../static/images/hero.png');
     background-size: cover;
+        height: 30rem;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
     max-width: 50rem;
-    margin: 0 auto;
+    margin: 8rem auto;
 }
 
 .hero h1 {
@@ -269,6 +270,38 @@ body {
     height: auto;
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .modal-content {
+    display: block;
+    margin: 5% auto;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  }
+
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
 /* Estilos para mensajes flash */
 .flash-messages {
     padding: 0 1.25rem;
@@ -341,152 +374,74 @@ body {
 }
 
 
-/* Sección Premios */
+/* Sección Premios - Mejorada */
 #premios h2 {
+    margin-bottom: 1rem;
+}
+
+.section-intro {
+    text-align: center;
     margin-bottom: 2.5rem;
+    font-size: 1.2em;
+    color: #555;
 }
 
 .premios-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
-    gap: 1.5625rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    justify-content: center;
 }
 
-.premios-card {
-    background-color: var(--color-light-grey);
-    padding: 1.25rem;
-    border-radius: 0.375rem;
+.premio-card {
+    background-color: var(--color-white);
+    border-radius: 0.5rem;
     text-align: center;
     border: 1px solid #ddd;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
 }
 
-.premios-card:hover {
+.premio-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
 }
 
-.premios-card h3 {
-    font-family: var(--font-secondary);
-    font-size: 1.5em;
-    color: var(--color-black);
-    margin-top: 0;
-    margin-bottom: 0.625rem;
-    font-weight: 700;
-}
-
-.premios-card p {
-    font-size: 1em;
-    color: #555;
-    margin-bottom: 0;
-}
-
-.premios-image {
-    width: 100%;
-    height: auto;
-}
-
-/* Sección Bases del Concurso - Updated */
-.section#bases .bases-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 2rem;
-    align-items: flex-start;
-}
-
-.section#bases .bases-image {
-    flex: 1.2; /* Aumentado para dar más espacio a la imagen */
-    min-width: 350px; /* Ancho mínimo aumentado */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-}
-
-.section#bases .bases-info {
-    flex: 1.8; /* Ajustado para mantener la proporción */
-    min-width: 300px;
-}
-
-.section#bases .base-image {
-    width: 100%;
-    height: auto;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    object-fit: cover;
-    max-height: 650px; /* Altura máxima aumentada */
-    display: block;
-    margin: 0 auto; /* Centrar la imagen */
-}
-
-/* Estilos para el modal */
-.modal {
-    display: none; /* Oculto por defecto */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
-  }
-  
-  /* Imagen dentro del modal */
-  .modal-content {
-    display: block;
-    margin: 5% auto;
-    max-width: 90%;
-    max-height: 80vh;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
-  }
-  
-  /* Botón de cerrar (la X) */
-  .close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 1001;
-  }
-
-/* Responsive adjustments for Bases section */
-@media (max-width: 768px) {
-    .section#bases .bases-container {
-        flex-direction: column;
-    }
-    
-    .section#bases .bases-image, 
-    .section#bases .bases-info {
-        width: 100%;
-    }
-}
-
-/* Style for the button in bases section */
-.section#bases .btn-primary {
-    display: inline-block;
-    padding: 0.625rem 1.25rem;
+.premio-header {
     background-color: var(--color-red);
-    color: var(--color-white);
-    text-decoration: none;
-    border-radius: 0.3125rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
-    border: none;
-    cursor: pointer;
-    margin-top: 1rem;
+    padding: 1rem;
+    color: white;
 }
 
-.section#bases .btn-primary:hover {
-    background-color: #8a2812;
+.premio-card h3 {
+    font-family: var(--font-secondary);
+    font-size: 1.3em;
+    margin: 0 0 0.625rem 0;
+    padding: 0.5rem;
+    font-weight: 700;
+    color: var(--color-black);
+    background-color: var(--color-light-grey);
+    border-radius: 0.3rem;
 }
 
+.pintxo-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.premio-footer {
+    padding: 1rem;
+    background-color: var(--color-light-grey);
+}
+
+.premio-footer p {
+    margin: 0;
+    font-size: 0.9em;
+    font-style: italic;
+}
 /* Footer */
 footer {
     background-color: var(--color-black);
@@ -501,7 +456,6 @@ footer p {
     font-size: 0.9em;
 }
 
-/* --- Responsive Design --- */
 
 /* Para tablets y pantallas medianas */
 @media (max-width: 768px) { 
@@ -534,6 +488,9 @@ footer p {
     .section#bases .bases-info {
         width: 100%;
     }
+     .premios-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* Para móviles */
@@ -564,4 +521,7 @@ footer p {
     .bar-grid {
         grid-template-columns: 1fr;
     }
-}
+    .premios-grid {
+        grid-template-columns: 1fr;
+    }
+} 

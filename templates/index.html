@@ -118,19 +118,35 @@
         <p>Recuerda que solo puedes votar una vez por categoría.</p>
     </section>
 
-     <section id="premios" class="section">
+          <section id="premios" class="section">
         <h2>Premios del Concurso</h2>
+        <p class="section-intro">Estos son los reconocimientos que otorgaremos a los mejores pintxos en cada categoría.</p>
+        
         <div class="premios-grid">
-            {% if premios %}
-                {% for premio in premios %}
-                    <div class="premio-card">
-                        <h3>{{ premio.nombre_pintxo }}</h3>
-                        <img src="{{ url_for('static', filename=premio.pintxo_image) }}" alt="{{ premio.nombre_pintxo }}" class="pintxo-image">
-                    </div>
-                {% endfor %}
-            {% else %}
-                <p>No hay premios disponibles en esta categoría.</p>
-            {% endif %}
+            <div class="premio-card">
+                <h3>Mejor Pintxo Creativo/Innovador</h3>
+                <img src="{{ url_for('static', filename='images/pintxos/creativo.jpg') }}" alt="Pintxo Creativo" class="pintxo-image">
+            </div>
+            <div class="premio-card">
+                <h3>Mejor Pintxo de Tortilla</h3>
+                <img src="{{ url_for('static', filename='images/pintxos/tortilla.jpg') }}" alt="Pintxo de Tortilla" class="pintxo-image">
+            </div>
+            <div class="premio-card">
+                <h3>Mejor Pintxo de Bacalao</h3>
+                <img src="{{ url_for('static', filename='images/pintxos/bakalao.jpeg') }}" alt="Pintxo de Bacalao" class="pintxo-image">
+            </div>
+            <div class="premio-card">
+                <h3>Mejor Pintxo de Gilda</h3>
+                <img src="{{ url_for('static', filename='images/pintxos/gilda.jpeg') }}" alt="Pintxo de Gilda" class="pintxo-image">
+            </div>
+            <div class="premio-card">
+                <h3>Mejor Pintxo Vegano</h3>
+                <img src="{{ url_for('static', filename='images/pintxos/vegano.jpg') }}" alt="Pintxo Vegano" class="pintxo-image">
+            </div>
+            <div class="premio-card">
+                <h3>Mejor Pintxo de Rabas</h3>
+                <img src="{{ url_for('static', filename='images/pintxos/rabas.webp') }}" alt="Pintxo de Rabas" class="pintxo-image">
+            </div>
         </div>
     </section>
 
