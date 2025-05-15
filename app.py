@@ -49,7 +49,7 @@ pintxo_premios = [
 ]
 
 imagenes_popup = {
-    "Bar Charly": "images/collage/full/1.png",
+    "Bar Charly": "images/collage/1.png",
     "Restaurante Víctor Montes": "images/collage/2.png",
     "Txiriboga": "images/collage/3.png",
     "Gure Toki": "images/collage/4.png",
