@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Ranking de Pintxos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+ 
+        .responsive-table-container {
+            overflow-x: auto;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            min-width: 600px;
+            color:black
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: #444;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        @media screen and (max-width: 768px) {
+            .col-categoria, .col-bar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+        <nav class="navbar">
+        <div class="logo">Concurso Pintxos Bilbao</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Concurso de Pintxos Bilbao 2025</h1>
+            <p>¡Descubre los mejores pintxos de la ciudad!</p>
+
+        </div>
+    </header>
+    <h1>Ranking de Pintxos por Número de Votos</h1>
+
+    {% if resultados %}
+        <div class="responsive-table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre del Pintxo</th>
+                        <th class="col-categoria">Categoría</th>
+                        <th class="col-bar">Bar</th>
+                        <th>Total de Votos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for nombre_pintxo, nombre_categoria, nombre_bar, total_votos in resultados %}
+                        <tr>
+                            <td>{{ nombre_pintxo }}</td>
+                            <td class="col-categoria">{{ nombre_categoria }}</td>
+                            <td class="col-bar">{{ nombre_bar }}</td>
+                            <td>{{ total_votos }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p>No hay votos registrados aún.</p>
+    {% endif %}
+        </footer>
+
+    <div id="imageModal" class="modal" style="display: none;">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+</footer>
+</body>
+</html>

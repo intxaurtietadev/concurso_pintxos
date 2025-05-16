@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Votos Registrados</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+<style>
+.responsive-table-container {
+    overflow-x: auto;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    min-width: 600px; /* Previene que se comprima demasiado */
+    color:black;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+th {
+    background-color: #444;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+    .alert {
+        background-color: #ffeeba;
+        color: #856404;
+        padding: 15px;
+        border: 1px solid #ffeeba;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+    /* Responsive: Oculta columnas en pantallas menores de 768px */
+@media screen and (max-width: 768px) {
+    .col-id,
+    .col-votante,
+    .col-fecha {
+        display: none;
+    }
+}
+</style>
+</head>
+
+    <nav class="navbar">
+        <div class="logo">Concurso Pintxos Bilbao</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Concurso de Pintxos Bilbao 2025</h1>
+            <p>¡Descubre los mejores pintxos de la ciudad!</p>
+
+        </div>
+    </header>
+
+    <h1>Votos Registrados (Desde Base de Datos)</h1>
+
+    {% if votos %}
+    <div class="responsive-table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th class="col-id">ID Voto</th>
+                    <th class="col-votante"Votante</th>
+                    <th>Email</th>
+                    <th>Pintxo</th>
+                    <th>Bar</th>
+                    <th>Categoría</th>
+                    <th class="col-fecha">Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for voto in votos %}
+                    <tr>
+                        <td class="col-id">{{ voto.id_voto }}</td>
+                        <td class="col-votante">{{ voto.usuario_obj.nombre_usuario if voto.usuario_obj else 'N/A' }}</td>
+                        <td>{{ voto.usuario_obj.email_usuario if voto.usuario_obj else 'N/A' }}</td>
+                        <td>{{ voto.pintxo_obj.nombre_pintxo if voto.pintxo_obj else 'N/A' }}</td>
+                        <td>
+                            {{ voto.pintxo_obj.bar_obj.nombre_bar 
+                                if voto.pintxo_obj and voto.pintxo_obj.bar_obj else 'N/A' }}
+                        </td>
+                        <td>
+                            {{ voto.pintxo_obj.categoria_obj.nombre_categoria 
+                                if voto.pintxo_obj and voto.pintxo_obj.categoria_obj else 'N/A' }}
+                        </td>
+                        <td class="col-fecha">
+                            {{ voto.fecha_voto.strftime('%Y-%m-%d %H:%M:%S') if voto.fecha_voto else 'N/A' }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    {% else %}
+        <div class="alert">No hay votos registrados en la base de datos.</div>
+    {% endif %}
+<footer>
+        <p>&copy; 2025 Concurso de Pintxos Bilbao</p>
+    </footer>
+
+    <div id="imageModal" class="modal" style="display: none;">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+</footer>
+</body>
+</html>

@@ -3,6 +3,7 @@ from . import db
 from .models import Bar, Categoria, Pintxo, Usuario, Voto, Rol
 from .forms import VotoForm
 from .services import registrar_voto_servicio
+from sqlalchemy import func
 
 main_bp = Blueprint('main', __name__)
 
@@ -136,4 +137,26 @@ def ver_votos():
         respuesta_html += "</pre>"
     else:
         respuesta_html += "<p>No hay votos registrados en la base de datos.</p>"
-    return respuesta_html
+   # return respuesta_html
+   
+    return render_template('votos.html', votos=votos_en_db)
+
+@main_bp.route('/ranking-pintxos')
+def ranking_pintxos():
+    # Consulta para contar votos por pintxo con joins
+    resultados = (
+        db.session.query(
+            Pintxo.nombre_pintxo,
+            Categoria.nombre_categoria,
+            Bar.nombre_bar,
+            func.count(Voto.id_voto).label('total_votos')
+        )
+        .join(Voto, Voto.id_pintxo == Pintxo.id_pintxo)
+        .join(Categoria, Pintxo.id_categoria == Categoria.id_categoria)
+        .join(Bar, Pintxo.id_bar == Bar.id_bar)
+        .group_by(Pintxo.id_pintxo, Pintxo.nombre_pintxo, Categoria.nombre_categoria, Bar.nombre_bar)
+        .order_by(func.count(Voto.id_voto).desc())
+        .all()
+    )
+
+    return render_template('ranking-pintxos.html', resultados=resultados)
