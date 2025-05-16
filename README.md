@@ -29,13 +29,13 @@ This project is a web application developed with Flask that simulates the organi
     * Flask-Migrate: Database migration handling with Alembic.
     * mysql-connector-python: Python driver for MySQL.
 * **Database**:
-    * MySQL
+    * MariaDB
 * **Frontend**:
     * HTML5
     * CSS3
     * JavaScript (for basic interactivity like the image modal)
 * **Web Server (for development)**:
-    * Flask development server (Werkzeug)
+    * Flask development server
 * **Version Control**:
     * Git
 
