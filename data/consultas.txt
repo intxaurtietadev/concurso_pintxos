@@ -1,0 +1,94 @@
+#tablas principales
+#tablas relacionales
+#datos principales que se han metido en cada tabla
+
+#Ranking de pintxos por categoría (más votados primero)
+
+SELECT 
+    c.nombre_categoria,
+    p.nombre_pintxo,
+    r.nombre_bar,
+    COUNT(v.id_voto) AS total_votos
+FROM votos v
+JOIN pintxos p ON v.id_pintxo = p.id_pintxo
+JOIN categorias c ON p.id_categoria = c.id_categoria
+JOIN bares r ON p.id_bar = r.id_bar
+GROUP BY p.id_pintxo
+ORDER BY c.nombre_categoria, total_votos DESC;
+
+# Ver votos de un usuario específico,(Qué pintxos votó y en qué categoría)
+
+SELECT 
+    u.nombre_usuario,
+    c.nombre_categoria,
+    p.nombre_pintxo,
+    r.nombre_bar
+FROM votos v
+JOIN usuarios u ON v.id_usuario = u.id_usuario
+JOIN pintxos p ON v.id_pintxo = p.id_pintxo
+JOIN categorias c ON p.id_categoria = c.id_categoria
+JOIN bares r ON p.id_bar = r.id_bar
+WHERE u.id_usuario = 1;  -- Cambia el ID según el usuario
+
+
+# Ranking de bares por total de votos recibidos
+
+SELECT 
+    r.nombre_bar,
+    COUNT(v.id_voto) AS total_votos
+FROM votos v
+JOIN pintxos p ON v.id_pintxo = p.id_pintxo
+JOIN bares r ON p.id_bar = r.id_bar
+GROUP BY r.id_bar
+ORDER BY total_votos DESC;
+
+#5 más votados
+
+SELECT 
+    p.nombre_pintxo,
+    r.nombre_bar,
+    COUNT(v.id_voto) AS total_votos
+FROM votos v
+JOIN pintxos p ON v.id_pintxo = p.id_pintxo
+JOIN bares r ON p.id_bar = r.id_bar
+GROUP BY p.id_pintxo
+ORDER BY total_votos DESC
+LIMIT 5;
+
+#Pintxos sin votos
+
+SELECT 
+    p.nombre_pintxo,
+    r.nombre_bar,
+    c.nombre_categoria
+FROM pintxos p
+JOIN bares r ON p.id_bar = r.id_bar
+JOIN categorias c ON p.id_categoria = c.id_categoria
+LEFT JOIN votos v ON p.id_pintxo = v.id_pintxo
+WHERE v.id_voto IS NULL;
+
+#Bares en Plaza Nueva
+
+SELECT * FROM bares WHERE direccion LIKE 'Plaza Nueva%';
+
+#Lista pintxos veganos
+
+SELECT * FROM pintxos 
+JOIN categorias ON pintxos.id_categoria = categorias.id_categoria
+WHERE categorias.nombre_categoria = 'Vegano'
+ORDER BY nombre_pintxo ASC;
+
+#Lista de bares con Pintxos con Atún
+
+SELECT bares.*, pintxos.nombre_pintxo
+FROM bares
+JOIN pintxos ON bares.id_bar = pintxos.id_bar
+JOIN categorias ON pintxos.id_categoria = categorias.id_categoria
+WHERE categorias.nombre_categoria = 'Atún';
+
+
+
+
+
+
+
