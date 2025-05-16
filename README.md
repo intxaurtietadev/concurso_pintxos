@@ -112,7 +112,8 @@ Main Page (/): Displays contest information, rules, participating bars, voting f
 
 Voting: Users can enter their name, email, select a category, and a bar to vote.
 
-View Votes (Debugging): Access /ver-votos to see a list of registered votes in the database (this route is primarily for debugging purposes and should be protected in a production environment).
+View Votes (Debugging): Access /ver-votos to see a list of registered votes in the database (this route is primarily for
+debugging purposes and should be protected in a production environment).
 ```
 
 ### Database Structure (Main Models)
